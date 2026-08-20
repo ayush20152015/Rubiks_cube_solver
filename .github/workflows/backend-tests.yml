@@ -20,10 +20,10 @@ jobs:
         python-version: ['3.10', '3.11']
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     
@@ -45,7 +45,7 @@ jobs:
         pytest --cov=services --cov=routes --cov-report=xml --cov-report=html tests/ || echo "No tests found"
     
     - name: Upload coverage
-      uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
       if: matrix.python-version == '3.11'
       with:
         files: ./backend/coverage.xml
