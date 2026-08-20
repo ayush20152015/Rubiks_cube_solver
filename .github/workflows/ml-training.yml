@@ -1,11 +1,6 @@
 name: ML Training
 
 on:
-  push:
-    branches: [ main, visual_work ]
-    paths:
-      - 'ml/**'
-      - '.github/workflows/ml-training.yml'
   workflow_dispatch:
 
 jobs:

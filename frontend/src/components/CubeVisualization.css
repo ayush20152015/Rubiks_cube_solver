@@ -1,0 +1,22 @@
+.cube-visualization {
+  margin-top: 24px;
+}
+
+.cube-visualization h3 {
+  color: #1f2937;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.cube-canvas {
+  height: 360px;
+  overflow: hidden;
+  border: 1px solid #cbd5d1;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .cube-canvas {
+    height: 300px;
+  }
+}

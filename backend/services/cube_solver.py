@@ -1,5 +1,8 @@
+from copy import deepcopy
 from typing import Dict, List, Tuple
 from collections import defaultdict
+
+import kociemba
 
 
 class CubeSolver:
@@ -87,11 +90,7 @@ class CubeSolver:
     
     def solve(self) -> Tuple[List[str], bool]:
         """
-        Solve the cube and return move sequence
-        
-        For MVP, returns a placeholder solution.
-        In production, this would interface with the C++ solver or
-        use a Python-based solver like kociemba.
+        Solve the cube with Kociemba's native two-phase algorithm.
         
         Returns:
             (list of moves, success)
@@ -100,14 +99,41 @@ class CubeSolver:
         if not is_valid:
             return [], False
         
-        # TODO: Interface with actual solver
-        # For now, return a placeholder
-        # In production, call C++ solver or use kociemba library
-        
-        # Example solution sequence
-        placeholder_solution = ['R', 'U', 'Rprime', 'Uprime'] * 5  # Placeholder
-        
-        return placeholder_solution, True
+        if self._is_solved():
+            return [], True
+
+        try:
+            solution = kociemba.solve(self._to_kociemba_facelets())
+        except ValueError:
+            return [], False
+
+        return solution.split() if solution else [], True
+
+    def _to_kociemba_facelets(self) -> str:
+        """Convert detected sticker colors to Kociemba's URFDLB face order."""
+        face_order = "URFDLB"
+        color_to_face = {
+            self.cube_state[face][1][1]: face
+            for face in face_order
+        }
+
+        try:
+            return "".join(
+                color_to_face[color]
+                for face in face_order
+                for row in self.cube_state[face]
+                for color in row
+            )
+        except KeyError as error:
+            raise ValueError(f"Unrecognized sticker color: {error.args[0]}") from error
+
+    def _is_solved(self) -> bool:
+        return all(
+            color == face[0][0]
+            for face in self.cube_state.values()
+            for row in face
+            for color in row
+        )
     
     def reset(self):
         """Reset cube to solved state"""
@@ -122,4 +148,4 @@ class CubeSolver:
     
     def get_state(self) -> Dict:
         """Get current cube state"""
-        return self.cube_state
+        return deepcopy(self.cube_state)

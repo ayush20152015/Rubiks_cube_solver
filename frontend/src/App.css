@@ -99,6 +99,13 @@
   border-left: 4px solid #c33;
 }
 
+.visualization-loading {
+  margin-top: 24px;
+  padding: 24px;
+  text-align: center;
+  color: #475569;
+}
+
 .app-footer {
   text-align: center;
   margin-top: 40px;

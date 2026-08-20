@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import ImageUpload from './components/ImageUpload'
 import SolutionDisplay from './components/SolutionDisplay'
 import { uploadFaceImage, solveCube, resetCube, getCubeState } from './api/client'
 import './App.css'
+
+const CubeVisualization = lazy(() => import('./components/CubeVisualization'))
 
 const FACES = [
   { id: 0, name: 'UP (White)' },
@@ -103,6 +105,11 @@ export default function App() {
         </section>
 
         {solution && <SolutionDisplay moves={solution} cubeState={cubeState} />}
+        {cubeState && (
+          <Suspense fallback={<div className="visualization-loading">Loading cube view...</div>}>
+            <CubeVisualization cubeState={cubeState} />
+          </Suspense>
+        )}
       </main>
 
       <footer className="app-footer">

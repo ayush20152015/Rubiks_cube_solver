@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import settings
-from routes import cube
+from routes import auth, cube
+from services.monitoring import configure_monitoring
 import os
+
+configure_monitoring()
 
 # Create FastAPI app
 app = FastAPI(
@@ -22,6 +25,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(cube.router, prefix=settings.API_PREFIX)
+app.include_router(auth.router, prefix=settings.API_PREFIX)
 
 
 @app.get("/")

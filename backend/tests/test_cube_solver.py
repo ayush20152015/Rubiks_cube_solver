@@ -62,3 +62,12 @@ def test_invalid_face_id():
     
     result = cube.set_face(10, colors)
     assert result is False
+
+
+def test_solved_cube_needs_no_moves():
+    cube = CubeSolver()
+
+    moves, success = cube.solve()
+
+    assert success is True
+    assert moves == []

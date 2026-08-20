@@ -1,16 +1,13 @@
 {
-  "builder": "dockerfile",
-  "dockerfile": {
-    "path": "backend/Dockerfile"
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "backend/Dockerfile"
   },
-  "services": {
-    "backend": {
-      "builder": "dockerfile",
-      "dockerfile": "backend/Dockerfile"
-    }
-  },
-  "env": {
-    "PYTHONUNBUFFERED": "1",
-    "DEBUG": "False"
+  "deploy": {
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 120,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 3
   }
 }

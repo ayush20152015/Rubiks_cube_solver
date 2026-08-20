@@ -23,6 +23,15 @@ class Settings(BaseSettings):
     
     # Cube solver
     SOLVER_TYPE: str = "ida_star"  # ida_star or bfs
+
+    # Authentication
+    AUTH_JWT_SECRET: str = "change-this-before-production"
+    AUTH_JWT_EXPIRES_MINUTES: int = 1440
+    USER_DATABASE_PATH: str = os.path.join(os.path.dirname(__file__), "data", "users.sqlite3")
+
+    # Optional monitoring providers
+    SENTRY_DSN: str = ""
+    NEW_RELIC_CONFIG_FILE: str = ""
     
     class Config:
         env_file = ".env"
