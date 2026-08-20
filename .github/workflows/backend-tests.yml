@@ -45,7 +45,7 @@ jobs:
         pytest --cov=services --cov=routes --cov-report=xml --cov-report=html tests/ || echo "No tests found"
     
     - name: Upload coverage
-        uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v4
       if: matrix.python-version == '3.11'
       with:
         files: ./backend/coverage.xml
