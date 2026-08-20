@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(Model)
 
+add_compile_definitions(RUBIKS_CUBE_SOLVER_DATABASE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Databases")
+
 add_executable(rubiks_cube_solver
         Model/RubiksCube.cpp
         Model/RubiksCube.h

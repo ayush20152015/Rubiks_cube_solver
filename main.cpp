@@ -266,7 +266,12 @@ int main() {
 
 
 // CornerDBMaker Testing --------------------------------------------------------------------------
-    string fileName = "C:\\Users\\user\\CLionProjects\\rubiks-cube-solver\\Databases\\cornerDepth5V1.txt";
+    string fileName = string(RUBIKS_CUBE_SOLVER_DATABASE_DIR) + "/cornerDepth5V1.txt";
+    ifstream databaseFile(fileName, ios::binary);
+    if (!databaseFile) {
+        cerr << "Unable to open corner pattern database: " << fileName << "\n";
+        return 1;
+    }
 
 //    Code to create Corner Database
 //    CornerDBMaker dbMaker(fileName, 0x99);
