@@ -1,0 +1,11 @@
+name: rubiks-cube-solver
+version: 1
+
+environments:
+  production:
+    builds:
+      - src: "backend/main.py"
+        use: "@vercel/python"
+    routes:
+      - src: "/(.*)"
+        dest: "backend/main.py"

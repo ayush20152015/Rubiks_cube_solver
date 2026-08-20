@@ -363,14 +363,59 @@ The scaffold is production-ready for MVP. To get started:
 - **Backend Guide:** [backend/README.md](backend/README.md)
 - **ML Guide:** [ml/README.md](ml/README.md)
 
+### Deployment (✅ READY)
+
+**Code is now on GitHub!**
+- Repository: https://github.com/ayush20152015/Rubiks_cube_solver
+- Branch: visual_work
+- Commit: 18b93e3 (feat: complete MVP scaffold)
+
+**Quick Deployment Steps:**
+
+1. **Frontend → Vercel**
+   - Go to https://vercel.com/new
+   - Import from GitHub
+   - Set root: `frontend/`
+   - Deploy (auto builds with Vite)
+   - Get URL like: https://rubiks-cube-solver.vercel.app
+
+2. **Backend → Railway**
+   - Go to https://railway.app
+   - Create project, select GitHub repo
+   - Railway auto-detects Python/Docker
+   - Deploys FastAPI service
+   - Get URL like: https://rubiks-cube-solver-api.up.railway.app
+
+3. **Connect Them**
+   - Update Vercel env var: `VITE_API_URL=<railway-url>`
+   - Update Railway env var: `CORS_ORIGINS=[<vercel-url>]`
+   - Auto-redeploy happens
+
+**Files Created for Deployment:**
+- `DEPLOYMENT.md` - Step-by-step deployment guide (open this first!)
+- `deploy.sh` - Helper script for git push
+- `vercel.json` - Vercel configuration
+- `railway.json` - Railway configuration
+- `frontend/vercel.json` - Frontend Vercel settings
+- `.github/workflows/deploy.yml` - Auto-deployment workflow (needs GitHub secrets)
+
+**GitHub Actions CI/CD Workflows (Already Set Up):**
+- ✅ `backend-tests.yml` - Run pytest on backend
+- ✅ `frontend-build.yml` - Build React app  
+- ✅ `ml-training.yml` - Train model
+- ✅ `deploy.yml` - Deploy to Vercel + Railway (requires secrets)
+
 ### Next Phase
 
 After MVP validation:
-1. Deploy to Vercel + Railway
-2. Integrate real Kaggle dataset training
-3. Optimize ML model performance
-4. Add 3D cube visualization
-5. Consider C++ solver integration for speed
-6. Add user authentication & history
-7. Mobile app version
+1. ✅ Code on GitHub (DONE)
+2. 🔄 Deploy to Vercel + Railway (see DEPLOYMENT.md)
+3. Integrate real Kaggle dataset training
+4. Optimize ML model performance
+5. Add 3D cube visualization
+6. Consider C++ solver integration for speed
+7. Add user authentication & history
+8. Mobile app version
+9. Production monitoring (Sentry, New Relic)
+10. Database (PostgreSQL on Railway)
 

@@ -1,0 +1,16 @@
+{
+  "builder": "dockerfile",
+  "dockerfile": {
+    "path": "backend/Dockerfile"
+  },
+  "services": {
+    "backend": {
+      "builder": "dockerfile",
+      "dockerfile": "backend/Dockerfile"
+    }
+  },
+  "env": {
+    "PYTHONUNBUFFERED": "1",
+    "DEBUG": "False"
+  }
+}
