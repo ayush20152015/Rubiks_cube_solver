@@ -30,3 +30,62 @@
 *.exe
 *.out
 *.app
+
+# Frontend (Node.js)
+node_modules/
+frontend/dist/
+frontend/build/
+
+# Backend & ML (Python)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv
+*.egg-info/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.log
+
+# ML Models
+models/*.h5
+models/*.pt
+models/*.pth
+models/trained_*
+
+# Vercel & Deployment
+.vercel/
+.railway/
+.next/
+out/
+
+# Data files
+data/
+datasets/
+downloads/
+*.zip
+
